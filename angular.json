@@ -1,7 +1,8 @@
 {
   "version": 1,
   "cli": {
-    "defaultCollection": "@nrwl/angular"
+    "defaultCollection": "@nrwl/angular",
+    "packageManager": "yarn"
   },
   "defaultProject": "poc-shell",
   "schematics": {
@@ -39,7 +40,7 @@
       "prefix": "nx-poc",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/apps/poc-shell",
             "index": "apps/poc-shell/src/index.html",
@@ -51,8 +52,11 @@
               "apps/poc-shell/src/favicon.ico",
               "apps/poc-shell/src/assets"
             ],
-            "styles": ["apps/poc-shell/src/styles.scss"],
-            "scripts": []
+            "styles": [
+              "apps/poc-shell/src/styles.scss"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "apps/poc-shell/webpack.config.js"
           },
           "configurations": {
             "production": {
@@ -80,18 +84,22 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "extraWebpackConfig": "apps/poc-shell/webpack.prod.config.js"
             }
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "options": {
-            "browserTarget": "poc-shell:build"
+            "browserTarget": "poc-shell:build",
+            "extraWebpackConfig": "apps/poc-shell/webpack.config.js",
+            "port": 4000
           },
           "configurations": {
             "production": {
-              "browserTarget": "poc-shell:build:production"
+              "browserTarget": "poc-shell:build:production",
+              "extraWebpackConfig": "apps/poc-shell/webpack.prod.config.js"
             }
           }
         },
@@ -111,11 +119,14 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/poc-shell"],
+          "builder": "ngx-build-plus:karma",
+          "outputs": [
+            "coverage/apps/poc-shell"
+          ],
           "options": {
             "jestConfig": "apps/poc-shell/jest.config.js",
-            "passWithNoTests": true
+            "passWithNoTests": true,
+            "extraWebpackConfig": "apps/poc-shell/webpack.config.js"
           }
         }
       }
@@ -141,7 +152,162 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/poc-shell-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/poc-shell-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      }
+    },
+    "ui": {
+      "projectType": "library",
+      "root": "libs/ui",
+      "sourceRoot": "libs/ui/src",
+      "prefix": "nx-poc",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/ui/src/**/*.ts",
+              "libs/ui/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/ui"
+          ],
+          "options": {
+            "jestConfig": "libs/ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "micro1": {
+      "projectType": "application",
+      "root": "apps/micro1",
+      "sourceRoot": "apps/micro1/src",
+      "prefix": "nx-poc",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/apps/micro1",
+            "index": "apps/micro1/src/index.html",
+            "main": "apps/micro1/src/main.ts",
+            "polyfills": "apps/micro1/src/polyfills.ts",
+            "tsConfig": "apps/micro1/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/micro1/src/favicon.ico",
+              "apps/micro1/src/assets"
+            ],
+            "styles": [
+              "apps/micro1/src/styles.scss"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "apps/micro1/webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/micro1/src/environments/environment.ts",
+                  "with": "apps/micro1/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ],
+              "extraWebpackConfig": "apps/micro1/webpack.prod.config.js"
+            }
+          }
+        },
+        "serve": {
+          "builder": "ngx-build-plus:dev-server",
+          "options": {
+            "browserTarget": "micro1:build",
+            "extraWebpackConfig": "apps/micro1/webpack.config.js",
+            "port": 5000
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "micro1:build:production",
+              "extraWebpackConfig": "apps/micro1/webpack.prod.config.js"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "micro1:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/micro1/src/**/*.ts",
+              "apps/micro1/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "ngx-build-plus:karma",
+          "outputs": [
+            "coverage/apps/micro1"
+          ],
+          "options": {
+            "jestConfig": "apps/micro1/jest.config.js",
+            "passWithNoTests": true,
+            "extraWebpackConfig": "apps/micro1/webpack.config.js"
+          }
+        }
+      }
+    },
+    "micro1-e2e": {
+      "root": "apps/micro1-e2e",
+      "sourceRoot": "apps/micro1-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/micro1-e2e/cypress.json",
+            "tsConfig": "apps/micro1-e2e/tsconfig.e2e.json",
+            "devServerTarget": "micro1:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "micro1:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/micro1-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }

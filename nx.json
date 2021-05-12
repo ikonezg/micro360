@@ -25,6 +25,16 @@
     "poc-shell-e2e": {
       "tags": [],
       "implicitDependencies": ["poc-shell"]
+    },
+    "ui": {
+      "tags": []
+    },
+    "micro1": {
+      "tags": []
+    },
+    "micro1-e2e": {
+      "tags": [],
+      "implicitDependencies": ["micro1"]
     }
   }
 }
