@@ -35,6 +35,9 @@
     "micro1-e2e": {
       "tags": [],
       "implicitDependencies": ["micro1"]
+    },
+    "models": {
+      "tags": []
     }
   }
 }

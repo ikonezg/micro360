@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class RedButtonComponent {
   @Output() btnEmit = new EventEmitter<string>();
-  @Input() labelTest: string;
+  @Input() label: string;
   onClick(label: string) {
     this.btnEmit.emit(label);
   }

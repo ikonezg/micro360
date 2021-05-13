@@ -52,9 +52,7 @@
               "apps/poc-shell/src/favicon.ico",
               "apps/poc-shell/src/assets"
             ],
-            "styles": [
-              "apps/poc-shell/src/styles.scss"
-            ],
+            "styles": ["apps/poc-shell/src/styles.scss"],
             "scripts": [],
             "extraWebpackConfig": "apps/poc-shell/webpack.config.js"
           },
@@ -120,9 +118,7 @@
         },
         "test": {
           "builder": "ngx-build-plus:karma",
-          "outputs": [
-            "coverage/apps/poc-shell"
-          ],
+          "outputs": ["coverage/apps/poc-shell"],
           "options": {
             "jestConfig": "apps/poc-shell/jest.config.js",
             "passWithNoTests": true,
@@ -152,9 +148,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/poc-shell-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/poc-shell-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -168,17 +162,12 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/ui/src/**/*.ts",
-              "libs/ui/src/**/*.html"
-            ]
+            "lintFilePatterns": ["libs/ui/src/**/*.ts", "libs/ui/src/**/*.html"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/ui"
-          ],
+          "outputs": ["coverage/libs/ui"],
           "options": {
             "jestConfig": "libs/ui/jest.config.js",
             "passWithNoTests": true
@@ -201,13 +190,8 @@
             "polyfills": "apps/micro1/src/polyfills.ts",
             "tsConfig": "apps/micro1/tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "apps/micro1/src/favicon.ico",
-              "apps/micro1/src/assets"
-            ],
-            "styles": [
-              "apps/micro1/src/styles.scss"
-            ],
+            "assets": ["apps/micro1/src/favicon.ico", "apps/micro1/src/assets"],
+            "styles": ["apps/micro1/src/styles.scss"],
             "scripts": [],
             "extraWebpackConfig": "apps/micro1/webpack.config.js"
           },
@@ -273,9 +257,7 @@
         },
         "test": {
           "builder": "ngx-build-plus:karma",
-          "outputs": [
-            "coverage/apps/micro1"
-          ],
+          "outputs": ["coverage/apps/micro1"],
           "options": {
             "jestConfig": "apps/micro1/jest.config.js",
             "passWithNoTests": true,
@@ -305,9 +287,28 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/micro1-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/micro1-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "models": {
+      "root": "libs/models",
+      "sourceRoot": "libs/models/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/models/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/models"],
+          "options": {
+            "jestConfig": "libs/models/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }

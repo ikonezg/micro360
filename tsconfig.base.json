@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-poc/ui": ["libs/ui/src/index.ts"]
+      "@nx-poc/ui": ["libs/ui/src/index.ts"],
+      "@nx-poc/models": ["libs/models/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
