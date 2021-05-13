@@ -5,7 +5,7 @@ const path = require("path");
 const sharedMappings = new mf.SharedMappings();
 sharedMappings.register(
   path.join(__dirname, '../../tsconfig.base.json'),
-  [/* mapped paths to share */]);
+  []);
 
 module.exports = {
   output: {
@@ -19,11 +19,11 @@ module.exports = {
     new ModuleFederationPlugin({
       
         // For remotes (please adjust)
-        // name: "micro1",
-        // filename: "remoteEntry.js",
-        // exposes: {
-        //     './Component': './apps/micro1/src/app/app.component.ts',
-        // },        
+        name: "micro1",
+        filename: "remoteEntry.js",
+        exposes: {
+            './Component': './apps/micro1/src/app/app.component.ts',
+        },        
         
         // For hosts (please adjust)
         // remotes: {

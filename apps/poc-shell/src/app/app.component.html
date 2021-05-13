@@ -4,3 +4,8 @@
   label="green"
   (emitBtn)="onClick($event)"
 ></nx-poc-green-button>
+
+<h1>micro</h1>
+<div *ngFor="let p of plugins">
+  <nx-poc-plugin-proxy [options]="p"></nx-poc-plugin-proxy>
+</div>
