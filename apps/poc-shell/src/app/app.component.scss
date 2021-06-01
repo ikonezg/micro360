@@ -131,3 +131,17 @@ summary {
   width: 16px;
   margin-right: 4px;
 }
+
+.lib {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border: 1px solid red;
+  padding: 10px;
+}
+.micro {
+  width: 100%;
+  border: 1px solid blue;
+  padding: 10px;
+  margin-top: 1rem;
+}

@@ -19,4 +19,8 @@ export class AppComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.plugins = await this.lookupService.lookup();
   }
+
+  onClickMicro(event) {
+    console.log(event);
+  }
 }

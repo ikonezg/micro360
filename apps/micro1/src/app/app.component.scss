@@ -131,3 +131,14 @@ summary {
   width: 16px;
   margin-right: 4px;
 }
+.pokemon {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0;
+  .poke {
+    padding: 10px;
+    border: 1px solid violet;
+    border-radius: 10px;
+  }
+}

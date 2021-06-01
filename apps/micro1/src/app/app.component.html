@@ -1,3 +1,6 @@
-<h1>Micro 1</h1>
-<nx-poc-red-button label="Karlo"></nx-poc-red-button>
-<div *ngFor="let poke of pokemon">{{ poke.name }}</div>
+<!-- <nx-poc-red-button label="Karlo"></nx-poc-red-button> -->
+<div class="pokemon">
+  <div class="poke" *ngFor="let poke of pokemon" (click)="onPoke(poke.name)">
+    {{ poke.name }}
+  </div>
+</div>

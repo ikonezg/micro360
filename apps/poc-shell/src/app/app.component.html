@@ -1,11 +1,15 @@
 <header>Poc Shell</header>
+<h3>Lib</h3>
+<section class="lib">
+  <nx-poc-green-button
+    label="green"
+    (emitBtn)="onClick($event)"
+  ></nx-poc-green-button>
+</section>
 
-<nx-poc-green-button
-  label="green"
-  (emitBtn)="onClick($event)"
-></nx-poc-green-button>
-
-<h1>micro</h1>
-<div *ngFor="let p of plugins">
-  <nx-poc-plugin-proxy [options]="p"></nx-poc-plugin-proxy>
-</div>
+<section class="micro">
+  <h1>micro</h1>
+  <div *ngFor="let p of plugins">
+    <nx-poc-plugin-proxy [options]="p"></nx-poc-plugin-proxy>
+  </div>
+</section>
