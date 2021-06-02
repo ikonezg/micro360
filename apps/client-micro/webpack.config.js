@@ -19,7 +19,7 @@ module.exports = {
     new ModuleFederationPlugin({
       
         // For remotes (please adjust)
-        name: "client-micro",
+        name: "client_micro",
         filename: "remoteEntry.js",
         exposes: {
             './Component': './apps/client-micro/src/app/app.component.ts',
@@ -36,7 +36,6 @@ module.exports = {
           "@angular/core": { singleton: true, strictVersion: true }, 
           "@angular/common": { singleton: true, strictVersion: true }, 
           "@angular/router": { singleton: true, strictVersion: true },
-          "@angular/common/http": { singleton: true, strictVersion: true },
           ...sharedMappings.getDescriptors()
         }
         
