@@ -22,7 +22,8 @@ module.exports = {
         name: "micro1",
         filename: "remoteEntry.js",
         exposes: {
-            './Component': './apps/micro1/src/app/app.component.ts',
+            './Pokemon': './apps/micro1/src/app/widgets/pokemon/pokemon.component.ts',
+            './Weather': './apps/micro1/src/app/widgets/weather/weather.component.ts',
         },        
         
         // For hosts (please adjust)
@@ -34,6 +35,7 @@ module.exports = {
         shared: {
           "@angular/core": { singleton: true, strictVersion: true }, 
           "@angular/common": { singleton: true, strictVersion: true }, 
+          "@angular/common/http": { singleton: true, strictVersion: true },
           "@angular/router": { singleton: true, strictVersion: true },
 
           ...sharedMappings.getDescriptors()

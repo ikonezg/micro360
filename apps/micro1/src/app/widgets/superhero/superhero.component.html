@@ -1,0 +1,7 @@
+<div class="container">
+  <ng-container *ngIf="page$ | async as page">
+    <div class="character" *ngFor="let character of page.results">
+      <p>{{ character.name }} {{ character.gender }} {{ character.height }}</p>
+    </div>
+  </ng-container>
+</div>

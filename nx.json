@@ -38,6 +38,13 @@
     },
     "models": {
       "tags": []
+    },
+    "client-micro": {
+      "tags": []
+    },
+    "client-micro-e2e": {
+      "tags": [],
+      "implicitDependencies": ["client-micro"]
     }
   }
 }

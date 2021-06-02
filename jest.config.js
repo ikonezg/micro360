@@ -4,5 +4,6 @@ module.exports = {
     '<rootDir>/libs/ui',
     '<rootDir>/apps/micro1',
     '<rootDir>/libs/models',
+    '<rootDir>/apps/client-micro',
   ],
 };

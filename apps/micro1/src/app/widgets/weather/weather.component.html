@@ -1,0 +1,10 @@
+<ng-container *ngIf="weather$ | async as weather">
+  <div class="title">Station: {{ weather.name | titlecase }}</div>
+  <div class="container">
+    <div class="icon">
+      <span *ngFor="let item of weather.weather">{{ item.description }}</span>
+    </div>
+    <div class="temp">{{ weather.main.temp }}</div>
+    {{ weather.name }}
+  </div>
+</ng-container>

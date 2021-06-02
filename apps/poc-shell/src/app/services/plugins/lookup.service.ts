@@ -5,13 +5,21 @@ import { PluginOptions } from './plugin';
 export class LookupService {
   lookup(): Promise<PluginOptions[]> {
     return Promise.resolve([
+      // {
+      //   remoteEntry: 'http://localhost:5000/remoteEntry.js',
+      //   remoteName: 'micro1',
+      //   exposedModule: './Pokemon',
+
+      //   displayName: 'Pokemon',
+      //   componentName: 'PokemonComponent',
+      // },
       {
         remoteEntry: 'http://localhost:5000/remoteEntry.js',
         remoteName: 'micro1',
-        exposedModule: './Component',
+        exposedModule: './Weather',
 
-        displayName: 'Component',
-        componentName: 'AppComponent',
+        displayName: 'Weather',
+        componentName: 'WeatherComponent',
       },
       // {
       //     remoteEntry: 'http://localhost:3000/remoteEntry.js',

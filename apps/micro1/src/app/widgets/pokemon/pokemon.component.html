@@ -1,0 +1,5 @@
+<div class="pokemon">
+  <div class="poke" *ngFor="let poke of pokemon" (click)="onPoke(poke.name)">
+    {{ poke.name }}
+  </div>
+</div>
